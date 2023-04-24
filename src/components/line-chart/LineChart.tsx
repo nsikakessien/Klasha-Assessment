@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Line } from "react-chartjs-2";
-import type { ChartArea, ChartData } from "chart.js";
+import type { ChartArea, ChartData, Plugin } from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -21,7 +23,8 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  Filler
+  Filler,
+  annotationPlugin
 );
 
 interface LineChartProps {
@@ -61,9 +64,60 @@ const LineChart = () => {
 
   const options = {
     responsive: true,
+    layout: {
+      padding: {
+        top: 30,
+      },
+    },
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
+      },
+      annotation: {
+        clip: false,
+        annotations: {
+          line1: {
+            xMin: "24 Aug",
+            xMax: "24 Aug",
+            borderColor: "#0A0A0A",
+            borderWidth: 2,
+            label: {
+              display: true,
+              content: "₦4.000",
+              yAdjust: -50,
+              backgroundColor: "white",
+              color: "black",
+            },
+          },
+        },
+      },
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        ticks: {
+          font: {
+            size: 14,
+          },
+          color: "#0A0A0A",
+          padding: 15,
+        },
+      },
+      y: {
+        grid: {},
+        border: {
+          display: false,
+        },
+        ticks: {
+          font: {
+            size: 14,
+          },
+          color: "#0A0A0A",
+          padding: 15,
+        },
       },
     },
   };
@@ -88,8 +142,30 @@ const LineChart = () => {
     setChartData(chartData);
   }, []);
 
+  const chartLine: Plugin = {
+    id: "chartLine",
+    beforeDatasetDraw(chart, args, pluginOptions) {
+      const {
+        ctx,
+        chartArea: { left, right, width, top, bottom, height },
+      } = chart;
+      ctx.save();
+
+      ctx.strokeStyle = "green";
+      ctx.lineWidth = 5;
+    },
+  };
+
   return (
-    <Line ref={chartRef} datasetIdKey="id" data={chartData} options={options} />
+    <div className="w-full">
+      <Line
+        ref={chartRef}
+        datasetIdKey="id"
+        data={chartData}
+        options={options}
+        plugins={[chartLine]}
+      />
+    </div>
   );
 };
 

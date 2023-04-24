@@ -19,6 +19,7 @@ import { ReactComponent as PaymentLinksRedIcon } from "../../assets/svg/payment-
 import { ReactComponent as WireIcon } from "../../assets/svg/wire.svg";
 import { ReactComponent as WireRedIcon } from "../../assets/svg/wire-red.svg";
 import SidebarMenu from "../menu/SidebarMenu";
+import { MenuProps } from "../header/Header";
 
 const menu = [
   {
@@ -79,12 +80,12 @@ const menu = [
   },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({showMenu, handleMenu}: MenuProps) => {
   return (
     <div className="fixed bg-red-100 pt-[30px] pb-12 bottom-0 top-0 w-[280px] flex items-center flex-col overflow-auto">
       <div>
         <KlashaLogo className="mb-[52px]" />
-        <SidebarMenu menu={menu} />
+        <SidebarMenu menu={menu} handleMenu={handleMenu} />
       </div>
     </div>
   );

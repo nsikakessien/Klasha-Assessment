@@ -16,9 +16,10 @@ interface MenuProps {
 
 interface Props {
   menu: MenuProps[];
+  handleMenu: () => void;
 }
 
-const SidebarMenu = ({ menu }: Props) => {
+const SidebarMenu = ({ menu, handleMenu }: Props) => {
   const [selectedMenu, setSelectedMenu] = useState<string>("Dashboard");
 
   const handleClick = (text: string) => {
@@ -61,7 +62,7 @@ const SidebarMenu = ({ menu }: Props) => {
             Support
           </p>
         </Button>
-        <Button>
+        <Button onClick={handleMenu}>
           <SideCaretIcon className="mr-[14px]" />
           <p className="text-xs font-semibold font-[inter]">Hide panel</p>
         </Button>
