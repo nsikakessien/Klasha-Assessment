@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import Button from "../button/Button";
 import { ReactComponent as SideCaretIcon } from "../../assets/svg/side-caret.svg";
 import { ReactComponent as SupportIcon } from "../../assets/svg/support.svg";
+import { Link, useLocation } from "react-router-dom";
 
 interface SubMenu {
   title: string;
   icon: React.ReactNode;
   clickedIcon: React.ReactNode;
+  link: string;
 }
 
 interface MenuProps {
@@ -20,7 +22,13 @@ interface Props {
 }
 
 const SidebarMenu = ({ menu, handleMenu }: Props) => {
-  const [selectedMenu, setSelectedMenu] = useState<string>("Dashboard");
+  const { pathname } = useLocation();
+  const filterMenu = menu.map((x) =>
+    x.subMenu.find((s) => s.link === pathname)
+  );
+  const [selectedMenu, setSelectedMenu] = useState<string>(
+    filterMenu.find((x) => x?.title)?.title as string
+  );
 
   const handleClick = (text: string) => {
     setSelectedMenu(text);
@@ -33,10 +41,14 @@ const SidebarMenu = ({ menu, handleMenu }: Props) => {
           <p className="text-grey-200 text-base mb-4">{item.title}</p>
           <div className="">
             {item.subMenu.map((sub) => (
-              <div
+              <Link
+                to={sub.link}
                 key={sub.title}
                 className="flex items-center mb-4 last:mb-0 cursor-pointer"
-                onClick={() => handleClick(sub.title)}
+                onClick={() => {
+                  handleClick(sub.title);
+                  handleMenu();
+                }}
               >
                 <div className="mr-2">
                   {selectedMenu === sub.title ? sub.clickedIcon : sub.icon}
@@ -50,7 +62,7 @@ const SidebarMenu = ({ menu, handleMenu }: Props) => {
                 >
                   {sub.title}
                 </p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

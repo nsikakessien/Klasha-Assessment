@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const [showMenu, setShowMenu] = useState(false);
+  console.log(showMenu);
 
   const handleMenu = () => {
     setShowMenu(!showMenu);
@@ -13,9 +14,9 @@ const Layout = () => {
   return (
     <div className="flex">
       <div
-        className={`max-[376px]:${
+        className={`${
           !showMenu ? "hidden" : null
-        } transition-all max-[376px]:z-20`}
+        } md:block transition-all z-20`}
       >
         <Sidebar handleMenu={handleMenu} showMenu={showMenu} />
       </div>

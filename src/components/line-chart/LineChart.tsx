@@ -137,8 +137,6 @@ const LineChart = () => {
       })),
     };
 
-    console.log(chartData);
-
     setChartData(chartData);
   }, []);
 

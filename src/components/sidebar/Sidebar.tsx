@@ -29,31 +29,37 @@ const menu = [
         title: "Dashboard",
         icon: <DashBoardIcon />,
         clickedIcon: <DashBoardRedIcon />,
+        link: "/",
       },
       {
         title: "Balances",
         icon: <BalanceIcon />,
         clickedIcon: <BalanceRedIcon />,
+        link: "/",
       },
       {
         title: "Transactions",
         icon: <TransactionIcon />,
         clickedIcon: <TransactionRedIcon />,
+        link: "/transactions",
       },
       {
         title: "Analytics",
         icon: <AnalyticsIcon />,
         clickedIcon: <AnalyticsRedIcon />,
+        link: "/",
       },
       {
         title: "Marketing",
         icon: <MarketingIcon />,
         clickedIcon: <MarketingRedIcon />,
+        link: "/",
       },
       {
         title: "Exchange rates",
         icon: <RatesIcon />,
         clickedIcon: <RatesRedIcon />,
+        link: "/",
       },
     ],
   },
@@ -64,23 +70,30 @@ const menu = [
         title: "Checkout",
         icon: <CheckoutIcon />,
         clickedIcon: <CheckoutRedIcon />,
+        link: "/",
       },
       {
         title: "Payment Links",
         icon: <PaymentLinksIcon />,
         clickedIcon: <PaymentLinksRedIcon />,
+        link: "/",
       },
     ],
   },
   {
     title: "Send payments",
     subMenu: [
-      { title: "Wire", icon: <WireIcon />, clickedIcon: <WireRedIcon /> },
+      {
+        title: "Wire",
+        icon: <WireIcon />,
+        clickedIcon: <WireRedIcon />,
+        link: "/",
+      },
     ],
   },
 ];
 
-const Sidebar = ({showMenu, handleMenu}: MenuProps) => {
+const Sidebar = ({ showMenu, handleMenu }: MenuProps) => {
   return (
     <div className="fixed bg-red-100 pt-[30px] pb-12 bottom-0 top-0 w-[280px] flex items-center flex-col overflow-auto">
       <div>

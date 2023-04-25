@@ -24,7 +24,7 @@ const Dashboard = () => {
           <img
             src={LineChartOne}
             alt="line graph for this week"
-            className="mb-[19px] max-[376px]:w-full"
+            className="mb-[19px] w-full"
           />
           <p className="font-[inter] text-white mb-[5px]">This week</p>
           <p className="text-xl font-medium text-white">₦1,652.50</p>
@@ -36,7 +36,7 @@ const Dashboard = () => {
           <img
             src={LineChartTwo}
             alt="Line Graph for this month"
-            className="mb-[19px] max-[376px]:w-full"
+            className="mb-[19px] w-full"
           />
           <p className="font-[inter] text-black mb-[5px]">This month</p>
           <p className="text-xl font-medium text-black">₦1,652.50</p>
@@ -48,14 +48,14 @@ const Dashboard = () => {
           <img
             src={LineChartThree}
             alt="Line graph for last month"
-            className="mb-[19px] max-[376px]:w-full"
+            className="mb-[19px] w-full"
           />
           <p className="font-[inter] text-black mb-[5px]">Last month</p>
           <p className="text-xl font-medium text-black">₦1,652.50</p>
         </div>
       </div>
-      <div className="flex items-center mt-[46px] mb-1 max-[376px]:flex-col">
-        <div className="flex items-center max-[376px]:w-full max-[376px]:mb-3">
+      <div className="flex items-center mt-[46px] mb-1 flex-col md:flex-row">
+        <div className="flex items-center max-[768px]:w-full mb-3 md:mb-0">
           <h2 className="font-medium text-xl mr-[22px]">Sales</h2>
           <p className="font-semibold text-red-200 mr-6">7 days</p>
           <p className="text-grey-900 font-semibold font-[inter] mr-[45px]">
@@ -67,20 +67,20 @@ const Dashboard = () => {
           </Button>
         </div>
 
-        <Button className="flex mr-2 justify-between border border-grey-300 items-center w-[283px] py-[10px] px-[14px] rounded-md max-[376px]:w-full max-[376px]:mb-3">
+        <Button className="flex mr-2 justify-between border border-grey-300 items-center w-[283px] py-[10px] px-[14px] rounded-md max-[768px]:w-full mb-3 md:mb-0">
           <p className="mr-[6px] font-medium font-[inter]">Email</p>
           <DownCaret />
         </Button>
-        <Button className="flex px-[13px] py-3 border border-grey-900 justify-center items-center rounded-md max-[376px]:mb-3">
+        <Button className="flex px-[13px] py-3 border border-grey-900 justify-center items-center rounded-md mb-3 md:mb-0">
           <DownArrow className="mr-[10px]" />
           <p className="mr-[6px] font-medium font-[inter]">Download report</p>
         </Button>
       </div>
-      <div className="flex gap-6 w-full max-[376px]:flex-col">
-        <div className="p-6 border rounded-lg flex items-center w-[70%] max-[376px]:w-full">
+      <div className="flex gap-6 w-full max-[768px]:flex-col">
+        <div className="p-6 border rounded-lg flex items-center w-[70%] max-[768px]:w-full">
           <LineChart />
         </div>
-        <img src={Klasha} alt="klasha" className="w-[30%]" />
+        <img src={Klasha} alt="klasha" className="md:w-[30%]" />
       </div>
     </div>
   );
