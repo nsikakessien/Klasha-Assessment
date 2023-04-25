@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "../header/Header";
 import Sidebar from "../sidebar/Sidebar";
-import Dashboard from "../../pages/dashboard/Dashboard";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,7 +21,7 @@ const Layout = () => {
       </div>
       <div className="flex flex-col md:ml-[280px] mt-[168px] w-full px-8">
         <Header handleMenu={handleMenu} showMenu={showMenu} />
-        <Dashboard />
+        <Outlet />
       </div>
     </div>
   );

@@ -77,10 +77,10 @@ const Dashboard = () => {
         </Button>
       </div>
       <div className="flex gap-6 w-full max-[376px]:flex-col">
-        <div className="p-6 border rounded-lg flex items-center w-[80%] max-[376px]:w-full">
+        <div className="p-6 border rounded-lg flex items-center w-[70%] max-[376px]:w-full">
           <LineChart />
         </div>
-        <img src={Klasha} alt="" />
+        <img src={Klasha} alt="klasha" className="w-[30%]" />
       </div>
     </div>
   );

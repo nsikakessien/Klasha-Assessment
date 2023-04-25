@@ -64,12 +64,12 @@ const LineChart = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     layout: {
       padding: {
         top: 30,
       },
     },
-    maintainAspectRatio: false,
     plugins: {
       legend: {
         display: false,
@@ -85,7 +85,7 @@ const LineChart = () => {
             label: {
               display: true,
               content: "₦4.000",
-              yAdjust: -50,
+              yAdjust: -110,
               backgroundColor: "white",
               color: "black",
             },
@@ -142,28 +142,13 @@ const LineChart = () => {
     setChartData(chartData);
   }, []);
 
-  const chartLine: Plugin = {
-    id: "chartLine",
-    beforeDatasetDraw(chart, args, pluginOptions) {
-      const {
-        ctx,
-        chartArea: { left, right, width, top, bottom, height },
-      } = chart;
-      ctx.save();
-
-      ctx.strokeStyle = "green";
-      ctx.lineWidth = 5;
-    },
-  };
-
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       <Line
         ref={chartRef}
         datasetIdKey="id"
         data={chartData}
         options={options}
-        plugins={[chartLine]}
       />
     </div>
   );
